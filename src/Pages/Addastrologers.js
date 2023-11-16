@@ -191,7 +191,7 @@ function Addastrologers() {
             const astroID = uuid().slice(0, 6).toUpperCase()
             astrologerDetails.append("astrologerID", astroID)
             console.log(astrologerDetails);
-            const response = await fetch("https://nice-pear-chipmunk-kilt.cyclic.app/api/v1/astrologer/register", {
+            const response = await fetch("http://localhost:8000/api/v1/astrologer/register", {
                 method: "POST",
                 body: astrologerDetails
             });

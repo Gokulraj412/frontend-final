@@ -15,7 +15,7 @@ function Astrologers() {
 
     useEffect(() => {
         async function fetchData() {
-            let response = await fetch("https://nice-pear-chipmunk-kilt.cyclic.app/api/v1/astrologer/allAstrologers", {
+            let response = await fetch("http://localhost:8000/api/v1/astrologer/allAstrologers", {
                 method: "GET",
             });
             // console.log(response);
