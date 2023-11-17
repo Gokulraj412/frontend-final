@@ -1,0 +1,52 @@
+.profile_container{
+    padding:30px 30px;
+
+    .profile_detail {
+        div{
+        display: grid;
+        border-bottom: 1px solid rgba(182, 178, 178,0.3);
+        grid-template-columns: 1fr 1fr;
+        gap:40px;
+        align-items: center;
+        .img{
+            width:80px;
+            height:50px;
+            margin-bottom:10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            &:hover{
+             cursor:pointer;
+            }
+            img{
+                max-width:100%;
+            }
+            
+        }
+      }
+
+    }
+     
+
+    .btnGroup {
+        margin: 20px 0;
+        border: none !important;
+        display: flex;
+        justify-content:flex-end ;
+        position:relative;
+        right:4rem;
+    }
+
+    .btns {
+        border: transparent;
+        background-color: skyblue;
+        font-size: 16px;
+        padding: 7px 20px;
+        border-radius: 5px;
+        &:hover {
+            color: white;
+            background-color: rgb(5, 35, 47)
+        }
+    }
+
+}
