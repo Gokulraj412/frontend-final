@@ -86,9 +86,9 @@ function Addastrologers() {
     } = useForm();
 
 
-    useEffect(() => {
-        reset();
-    }, [isSubmitSuccessful, reset]);
+    // useEffect(() => {
+    //     reset();
+    // }, [isSubmitSuccessful, reset]);
 
     const validation = {
         firstname: {
@@ -171,17 +171,27 @@ function Addastrologers() {
         e.preventDefault();
         setIsloading(true)
         if (dob) {
-            // console.log(data);
-            // console.log(dob);
-            // console.log(certificates);
-            // console.log(profilePhoto);
-            const astrologerDetails = new FormData();
+            console.log(data);
+            console.log(dob);
+            console.log(certificates);
+            console.log(profilePhoto);
+            // const astrologerDetails = new FormData();
 
+            const details = new FormData();
+            Object.keys(data).forEach((key)=>{
+                details.append(key, data[key])
+            })
 
-            Object.keys(data).forEach((key) => {
-                astrologerDetails.append(key, data[key]);
-            });
-            astrologerDetails.append("dob", dob)
+            details.append("dob",dob)
+            details.append("profilePic", profilePhoto)
+
+            Object.keys(certificates).forEach((key, index)=>{
+                details.append('certificates', certificates[key])
+            })
+            // Object.keys(data).forEach((key) => {
+            //     astrologerDetails.append(key, data[key]);
+            // });
+            // astrologerDetails.append("dob", dob)
             // astrologerDetails.append('profilePic', profilePhoto)
 
             // Object.keys(certificates).forEach((key, index) => {
@@ -189,11 +199,12 @@ function Addastrologers() {
             // });
 
             const astroID = uuid().slice(0, 6).toUpperCase()
-            astrologerDetails.append("astrologerID", astroID)
-            console.log(astrologerDetails);
+            // astrologerDetails.append("astrologerID", astroID)
+            // console.log(astrologerDetails);
+            console.log(details);
             const response = await fetch("http://localhost:8000/api/v1/astrologer/register", {
                 method: "POST",
-                body: astrologerDetails
+                // body: astrologerDetails
             });
             if (response.ok === false) {
                 alert("Registration Failed");

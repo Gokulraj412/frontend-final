@@ -4,7 +4,7 @@ const authSlice = createSlice({
     name:'auth',
     initialState:{
         loading:true,
-        isAuthendicated:false
+        isAuthenticated:false
     },
     reducers:{
         loginRequest(state, action){
@@ -35,6 +35,18 @@ const authSlice = createSlice({
             return {
                 ...state,
                 error:null
+            }
+        },
+        logoutSuccess(state, action){
+            return {
+                loading: false,
+                isAuthenticated: false,
+            }
+        },
+        logoutFail(state, action){
+            return {
+                ...state,
+                error:action.payload
             }
         },
         registerRequest(state, action){
@@ -71,6 +83,8 @@ export const{
     clearError,
     registerRequest,
     registerSuccess,
-    registerFail
+    registerFail,
+    logoutSuccess,
+    logoutFail
 } = actions;
 export default reducer

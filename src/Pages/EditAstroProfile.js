@@ -224,15 +224,15 @@ function EditAstroProfile() {
             });
 
             console.log('upadted details',astrologerDetails);
-            // const response = await fetch(`http://localhost:8000/api/v1/astrologer/update/${id}`, {
-            //     method: "PUT",
-            //     body: astrologerDetails
-            // });
-            // if (response.ok === false) {
-            //     alert("registration failed");
-            // } else {
-            //     alert("registration successful");
-            // }
+            const response = await fetch(`http://localhost:8000/api/v1/astrologer/update/${id}`, {
+                method: "PUT",
+                body: astrologerDetails
+            });
+            if (response.ok === false) {
+                alert("registration failed");
+            } else {
+                alert("registration successful");
+            }
             setDob(null)
             setCertificates([])
             setProfilePhoto(null)
@@ -241,6 +241,7 @@ function EditAstroProfile() {
         }
     })
     return (
+        <div className="infoContainer">
         <main id="admin-addastro">
             <section className="astro-head">
                 <div>
@@ -521,6 +522,7 @@ function EditAstroProfile() {
                 </Form>
             </section>
         </main >
+        </div>
     )
 
 }
