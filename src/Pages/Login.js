@@ -7,36 +7,43 @@ import logo from '../Assests/Logo.png'
 import { toast } from 'react-toastify'
 import { clearAuthError, login } from '../Actions/adminActions';
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom';
 
 function Login() {
 
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { loading, error, isAuthenticated } = useSelector(state => state.authState)
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(email, password);
     dispatch(login(email, password))
-
-    if (isAuthenticated) {
-      alert('Login SuccessFully')
+    // reset()
     }
-    //  else if(!isAuthenticated){
-    //   alert('Invalid Email or Password')
-    //   }
+  
 
+    useEffect(() => {
+      if(isAuthenticated) {
+          navigate('/astrologers')
+      }
+      if(error)  {
+        toast(error, {
+            position: toast.POSITION.TOP_RIGHT,
+            type: 'error',
+            onOpen: ()=> { dispatch(clearAuthError) }
+        })
+        return
+    }
+
+  },[error, isAuthenticated, dispatch, navigate])
+
+
+  const reset = ()=>{
+    setEmail('');
+    setPassword('')
   }
-  useEffect(() => {
-    if (error) {
-      toast(error, {
-        position: toast.POSITION.TOP_CENTER,
-        type: 'error',
-        onOpen: () => { dispatch(clearAuthError) }
-      })
-      return
-    }
-  }, [error, isAuthenticated, dispatch])
+
 
   return (
     // <div className="admin_login">

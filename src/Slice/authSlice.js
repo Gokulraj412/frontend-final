@@ -22,16 +22,19 @@ const authSlice = createSlice({
             }
         },
         loginFail(state, action){
+            console.log("Error in login:", action.payload);
             return {
                 ...state,
                 loading: false,
+                error: action.payload,
+             
              
             }
         },
         clearError(state, action){
             return {
                 ...state,
-                error:  null
+                error:null
             }
         },
         registerRequest(state, action){
