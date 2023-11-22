@@ -14,7 +14,7 @@ function SingleAstrologer(props) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:8000/api/v1/astrologer/getAstrologer/${id}`, {
+        const response = await fetch(`${process.env.REACT_APP_URL}/api/v1/astrologer/getAstrologer/${id}`, {
           method: 'GET',
         });
 
