@@ -188,18 +188,18 @@ function Addastrologers() {
             Object.keys(certificates).forEach((key, index)=>{
                 details.append('certificates', certificates[key])
             })
-            // Object.keys(data).forEach((key) => {
-            //     astrologerDetails.append(key, data[key]);
-            // });
-            // astrologerDetails.append("dob", dob)
-            // astrologerDetails.append('profilePic', profilePhoto)
+            Object.keys(data).forEach((key) => {
+                astrologerDetails.append(key, data[key]);
+            });
+            astrologerDetails.append("dob", dob)
+            astrologerDetails.append('profilePic', profilePhoto)
 
-            // Object.keys(certificates).forEach((key, index) => {
-            //     astrologerDetails.append(`certificates`, certificates[key]);
-            // });
+            Object.keys(certificates).forEach((key, index) => {
+                astrologerDetails.append(`certificates`, certificates[key]);
+            });
 
             const astroID = uuid().slice(0, 6).toUpperCase()
-            // astrologerDetails.append("astrologerID", astroID)
+            astrologerDetails.append("astrologerID", astroID)
             // console.log(astrologerDetails);
             console.log(details);
             const response = await fetch("${process.env.REACT_APP_URL}/api/v1/astrologer/register", {
